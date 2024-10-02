@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "week3rad", "week3rad.csproj", "{8BD06285-8BCC-4E1A-9174-429CC14A4E75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BD06285-8BCC-4E1A-9174-429CC14A4E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BD06285-8BCC-4E1A-9174-429CC14A4E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BD06285-8BCC-4E1A-9174-429CC14A4E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BD06285-8BCC-4E1A-9174-429CC14A4E75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B129A4EA-0599-422E-8665-79FB3E844015}
+	EndGlobalSection
+EndGlobal

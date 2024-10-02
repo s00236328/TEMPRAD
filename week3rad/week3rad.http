@@ -1,0 +1,15 @@
+﻿@week3rad_HostAddress = https://localhost:7150
+
+POST {{week3rad_HostAddress}}/todoitems
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name":"walk dog",
+  "isComplete":true
+}
+###
+
+GET {{week3rad_HostAddress}}/todoitems
+
+###

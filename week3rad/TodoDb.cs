@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using static week3rad.ToDo;
+using static week3rad.Todo;
 namespace week3rad
 {
     public class TodoDb: DbContext
@@ -7,6 +7,6 @@ namespace week3rad
         public TodoDb(DbContextOptions<TodoDb> options)
        : base(options) { }
 
-        public DbSet<ToDo> Todos => Set<ToDo>();
+        public DbSet<Todo> Todos => Set<Todo>();
     }
 }

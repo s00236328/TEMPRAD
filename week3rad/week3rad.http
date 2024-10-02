@@ -4,12 +4,46 @@ POST {{week3rad_HostAddress}}/todoitems
 Content-Type: application/json
 
 {
-  "id": 1,
+  
   "name":"walk dog",
-  "isComplete":true
+  "isComplete":true,
+  "priority":1
 }
 ###
+//adds an input
+POST {{week3rad_HostAddress}}/todoitems
+Content-Type: application/json
 
+{
+  
+    "name": "feed fish",
+  "isComplete": false,
+  "priority":2
+}
+###
+//gets all the saved items
 GET {{week3rad_HostAddress}}/todoitems
+
+###
+//gets all the items with an id of 1
+GET {{week3rad_HostAddress}}/todoitems/1
+
+###
+//changes the input
+PUT {{week3rad_HostAddress}}/todoitems/2
+Content-Type: application/json
+
+{
+  "name": "feed fish",
+  "isComplete": false,
+  "priority":1
+}
+###
+//deletes
+DELETE {{week3rad_HostAddress}}/todoitems/1
+
+###
+
+GET {{week3rad_HostAddress}}/todoitems/1
 
 ###

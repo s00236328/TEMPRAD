@@ -7,7 +7,7 @@ namespace week3radlab2
         public AdsDb(DbContextOptions<AdsDb> options)
        : base(options) { }
 
-        public DbSet<Ads> Todos => Set<Ads>();
+        public DbSet<Ads> Ads => Set<Ads>();
         public DbSet<Categories> Categories => Set<Categories>();
         public DbSet<Seller> Sellers => Set<Seller>();
 

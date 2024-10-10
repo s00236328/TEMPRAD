@@ -1,0 +1,56 @@
+﻿@week3radlab2_HostAddress = https://localhost:7165
+
+POST {{week3radlab2_HostAddress}}/ads
+Content-Type: application/json
+
+ {
+  "adId": 1,
+  "description": "Brand new laptop for sale. Excellent condition.",
+  "sellerID": 101,
+  "seller": {
+    "sellerId": 101,
+    "sellerName": "John Doe"
+  },
+  "categoryId": 5,
+  "categories": {
+    "categoriesId": 5,
+    "name": "Electronics"
+  }
+
+
+
+}
+
+###
+
+GET {{week3radlab2_HostAddress}}/ads
+
+###
+
+GET {{week3radlab2_HostAddress}}/ads/1
+
+###
+
+PUT {{week3radlab2_HostAddress}}/ads/{id}
+
+###
+
+DELETE {{week3radlab2_HostAddress}}/ads/{id}
+
+###
+
+GET {{week3radlab2_HostAddress}}/categories
+
+###
+
+POST {{week3radlab2_HostAddress}}/categories
+
+###
+
+GET {{week3radlab2_HostAddress}}/sellers
+
+###
+
+POST {{week3radlab2_HostAddress}}/sellers
+
+###

@@ -47,3 +47,7 @@ DELETE {{week3rad_HostAddress}}/todoitems/1
 GET {{week3rad_HostAddress}}/todoitems/1
 
 ###
+
+GET {{week3rad_HostAddress}}/todoitems/
+
+###

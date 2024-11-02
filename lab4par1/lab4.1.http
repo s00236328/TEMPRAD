@@ -1,0 +1,27 @@
+﻿@lab4.1_HostAddress = https://localhost:7150
+
+GET {{lab4.1_HostAddress}}/todoitems/
+
+###
+
+POST {{lab4.1_HostAddress}}/todoitems/
+Content-Type: application/json
+
+ {
+  "adId": 1,
+  "description": "Brand new laptop for sale. Excellent condition.",
+  "sellerID": 101,
+  "seller": {
+    "sellerId": 101,
+    "sellerName": "John Doe"
+  },
+  "categoryId": 5,
+  "categories": {
+    "categoriesId": 5,
+    "name": "Electronics"
+  }
+
+
+
+}
+###

@@ -21,7 +21,7 @@ namespace week3radlab2
         [Key]
         public int CategoriesId { get; set; }
         public string? Name {  get; set; }
-        public List<Ads> Ads { get; set; } = new();
+        //public List<Ads> Ads { get; set; } = new List<Ads>();
         
     }
     public class Seller

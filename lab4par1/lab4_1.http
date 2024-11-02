@@ -1,0 +1,22 @@
+﻿@lab4_1_HostAddress = https://localhost:7150
+
+GET {{lab4_1_HostAddress}}/todoitems/complete
+
+###
+
+GET {{lab4_1_HostAddress}}/todoitems/BillingType/{billingType}
+
+###
+
+GET {{lab4_1_HostAddress}}/todoitems/
+
+###
+
+POST {{lab4_1_HostAddress}}/todoitems/
+Content-Type: application/json
+{
+  "name": "Buy groceries",
+  "bt": 1,
+  "priority": 1
+}
+###

@@ -6,8 +6,7 @@ using week3radlab2;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<AdsDb>(options =>
-    options.UseSqlite("Data Source=D:\\repo\\TEMPRAD\\week3radlab2\\LocalDatabase.db"));
+builder.Services.AddDbContext<AdsDb>();
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
@@ -19,7 +18,7 @@ app.UseHttpsRedirection();
 
 // GET all ads, including Categories and Seller
 app.MapGet("/ads", async (AdsDb db) =>
-    await db.Ads.Include(a => a.Categories)
+     await db.Ads.Include(a => a.Categories)
                 .Include(a => a.Seller)
                 .ToListAsync());
 
@@ -39,10 +38,6 @@ app.MapPost("/ads", async (Ads ad, AdsDb db) =>
     var seller = await db.Sellers.FindAsync(ad.SellerID);
     var category = await db.Categories.FindAsync(ad.CategoryId);
 
-    
-
-    ad.Seller = seller;
-    ad.Categories = category;
 
     db.Ads.Add(ad);
     await db.SaveChangesAsync();

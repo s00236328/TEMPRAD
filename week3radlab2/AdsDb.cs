@@ -4,12 +4,18 @@ namespace week3radlab2
 {
     public class AdsDb : DbContext
     {
-        public AdsDb(DbContextOptions<AdsDb> options)
-       : base(options) { }
+        public string DbPath { get; }
 
-        public DbSet<Ads> Ads => Set<Ads>();
-        public DbSet<Categories> Categories => Set<Categories>();
-        public DbSet<Seller> Sellers => Set<Seller>();
+        public DbSet<Ads> Ads { get; set; }
+        public DbSet<Categories> Categories { get; set; }
+        public DbSet<Seller> Sellers { get; set; }
 
+        public AdsDb()
+        {
+            DbPath = "ads.db";
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlite($"Data Source={DbPath}");
     }
 }

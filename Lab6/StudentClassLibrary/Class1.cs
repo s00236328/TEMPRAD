@@ -1,9 +1,6 @@
 ﻿namespace StudentClassLibrary
 {
-    public class Class1
-    {
-     
-    }
+ 
     public class Student 
     {
         public int Id { get; set; }

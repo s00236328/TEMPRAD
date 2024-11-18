@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StudentClassLibrary;
+
 namespace StudentConsoleApp
 {
     public class CollegeDb : DbContext

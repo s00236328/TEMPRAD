@@ -7,9 +7,9 @@
         public int Age {  get; set; }
         public string Name { get; set; }
         public string EmailAddress { get; set; }
-        public ICollection<Course> Courses { get; set; }= new List<Course>();
+        public ICollection<Module> Courses { get; set; }= new List<Module>();
     }
-    public class Course
+    public class Module
     {
         public int Id {  get; set; }
         public string Name { get; set; }

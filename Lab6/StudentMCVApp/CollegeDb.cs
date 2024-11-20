@@ -11,7 +11,7 @@ namespace StudentMCVApp
     public class CollegeDb : DbContext
     {
         public DbSet<Student> StudentsMCV { get; set; }
-        public DbSet<Course> CoursesMCV { get; set; }
+        public DbSet<Module> CoursesMCV { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -48,7 +48,7 @@ namespace StudentMCVApp
             });
 
             // Configure Course entity
-            modelBuilder.Entity<Course>(entity =>
+            modelBuilder.Entity<Module>(entity =>
             {
                 entity.HasKey(e => e.Id); // Primary key
 
@@ -68,8 +68,8 @@ namespace StudentMCVApp
                       .WithMany(e => e.Courses); // Many-to-many relationship
                 //seed data
                 entity.HasData(
-          new Course { Id = 1, Name = "Mathematics", Department = "Mathematics", Lecturer = "Dr. Skibidi" },
-          new Course { Id = 2, Name = "Physics", Department = "Physics", Lecturer = "Dr. Pimp" }
+          new Module { Id = 1, Name = "Mathematics", Department = "Mathematics", Lecturer = "Dr. Skibidi" },
+          new Module { Id = 2, Name = "Physics", Department = "Physics", Lecturer = "Dr. Pimp" }
       );
             });
             modelBuilder.Entity<Student>()

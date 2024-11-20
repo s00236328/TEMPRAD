@@ -23,4 +23,9 @@
     <ProjectReference Include="..\StudentClassLibrary\StudentClassLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\CoursePage\" />
+    <Folder Include="Pages\StudentPage\" />
+  </ItemGroup>
+
 </Project>

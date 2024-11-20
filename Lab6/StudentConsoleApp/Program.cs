@@ -16,14 +16,14 @@ namespace StudentConsoleApp
                 dbContext.Database.EnsureCreated();
 
                 // Create new Courses
-                var course1 = new Course
+                var course1 = new Module
                 {
                     Name = "Mathematics 101",
                     Department = "Mathematics",
                     Lecturer = "Dr. Smith"
                 };
 
-                var course2 = new Course
+                var course2 = new Module
                 {
                     Name = "Computer Science 101",
                     Department = "Computer Science",
@@ -36,7 +36,7 @@ namespace StudentConsoleApp
                     Name = "John Doe",
                     Age = 20,
                     EmailAddress = "johndoe@example.com",
-                    Courses = new List<Course> { course1, course2 } // Assign courses
+                    Courses = new List<Module> { course1, course2 } // Assign courses
                 };
 
                 // Add the courses and student to the DbContext

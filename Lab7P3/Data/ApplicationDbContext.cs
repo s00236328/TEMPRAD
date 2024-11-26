@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Lab7P3.Models;
 
 namespace Lab7P3.Data
 {
@@ -9,5 +10,6 @@ namespace Lab7P3.Data
             : base(options)
         {
         }
+        public DbSet<Lab7P3.Models.Contact> Contact { get; set; } = default!;
     }
 }

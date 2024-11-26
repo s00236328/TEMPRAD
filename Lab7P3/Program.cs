@@ -1,5 +1,7 @@
 using Lab7P3.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lab7P3
@@ -17,15 +19,30 @@ namespace Lab7P3
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddRazorPages();
 
+            builder.Services.AddControllers(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
             var app = builder.Build();
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate();
+                // requires using Microsoft.Extensions.Configuration;
+                // Set password with the Secret Manager tool.
+                // dotnet user-secrets set SeedUserPW <pw>
 
-                SeedData.Initialize(services);
+                var testUserPw = builder.Configuration.GetValue<string>("SeedUserPW");
+
+                SeedData.Initialize(services, testUserPw);
             }
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

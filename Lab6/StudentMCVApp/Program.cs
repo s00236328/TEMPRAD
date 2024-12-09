@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace StudentMCVApp
 {
     public class Program
@@ -8,8 +10,13 @@ namespace StudentMCVApp
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-
+            builder.Services.AddDbContext<CollegeDb>(options =>
+            options.UseSqlite(builder.Configuration.GetConnectionString("College.db") ?? throw new InvalidOperationException("db connection string not found")));
             var app = builder.Build();
+            using (var scope = app.Services.CreateScope()) { 
+            var services = scope.ServiceProvider;
+                SeedData.Initialize(services);
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

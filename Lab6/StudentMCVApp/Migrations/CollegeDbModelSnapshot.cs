@@ -16,7 +16,7 @@ namespace StudentMCVApp.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
-            modelBuilder.Entity("StudentClassLibrary.Course", b =>
+            modelBuilder.Entity("StudentClassLibrary.Module", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -24,38 +24,19 @@ namespace StudentMCVApp.Migrations
 
                     b.Property<string>("Department")
                         .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Lecturer")
                         .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("CoursesMCV");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Department = "Mathematics",
-                            Lecturer = "Dr. Skibidi",
-                            Name = "Mathematics"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Department = "Physics",
-                            Lecturer = "Dr. Pimp",
-                            Name = "Physics"
-                        });
                 });
 
             modelBuilder.Entity("StudentClassLibrary.Student", b =>
@@ -69,7 +50,6 @@ namespace StudentMCVApp.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -80,62 +60,34 @@ namespace StudentMCVApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StudentsMCV");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 20,
-                            EmailAddress = "alice@gmail.com",
-                            Name = "Blood Johnson"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Age = 22,
-                            EmailAddress = "bob@gmail.com",
-                            Name = "Crip Smith"
-                        });
                 });
 
-            modelBuilder.Entity("StudentCourse", b =>
+            modelBuilder.Entity("StudentModules", b =>
                 {
-                    b.Property<int>("CoursesId")
+                    b.Property<int>("ModuleId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StudentsId")
+                    b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("CoursesId", "StudentsId");
+                    b.HasKey("ModuleId", "StudentId");
 
-                    b.HasIndex("StudentsId");
+                    b.HasIndex("StudentId");
 
-                    b.ToTable("StudentCourse");
-
-                    b.HasData(
-                        new
-                        {
-                            CoursesId = 1,
-                            StudentsId = 1
-                        },
-                        new
-                        {
-                            CoursesId = 2,
-                            StudentsId = 2
-                        });
+                    b.ToTable("StudentModules");
                 });
 
-            modelBuilder.Entity("StudentCourse", b =>
+            modelBuilder.Entity("StudentModules", b =>
                 {
-                    b.HasOne("StudentClassLibrary.Course", null)
+                    b.HasOne("StudentClassLibrary.Module", null)
                         .WithMany()
-                        .HasForeignKey("CoursesId")
+                        .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("StudentClassLibrary.Student", null)
                         .WithMany()
-                        .HasForeignKey("StudentsId")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

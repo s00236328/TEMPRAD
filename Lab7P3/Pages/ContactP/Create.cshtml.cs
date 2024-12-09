@@ -7,16 +7,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Lab7P3.Data;
 using Lab7P3.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Lab7P3.Authorization;
 
 namespace Lab7P3.Pages.ContactP
 {
-    public class CreateModel : PageModel
+    public class CreateModel : DI_BasePageModel
     {
         private readonly Lab7P3.Data.ApplicationDbContext _context;
 
-        public CreateModel(Lab7P3.Data.ApplicationDbContext context)
+        public CreateModel(
+             ApplicationDbContext context,
+             IAuthorizationService authorizationService,
+             UserManager<IdentityUser> userManager)
+             : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
         public IActionResult OnGet()
@@ -25,9 +31,8 @@ namespace Lab7P3.Pages.ContactP
         }
 
         [BindProperty]
-        public Contact Contact { get; set; } = default!;
+        public Contact Contact { get; set; }
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -35,8 +40,18 @@ namespace Lab7P3.Pages.ContactP
                 return Page();
             }
 
-            _context.Contact.Add(Contact);
-            await _context.SaveChangesAsync();
+            Contact.OwnerID = UserManager.GetUserId(User);
+
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                        User, Contact,
+                                                        ContactOperations.Create);
+            if (!isAuthorized.Succeeded)
+            {
+                return Forbid();
+            }
+
+            Context.Contact.Add(Contact);
+            await Context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

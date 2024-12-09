@@ -2,8 +2,7 @@
 using Lab7P3.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
-
+using Lab7P3.Authorization;
 namespace Lab7P3
 {
     public static class SeedData
@@ -20,17 +19,17 @@ namespace Lab7P3
 
                 var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@contoso.com");
                 //PIECE NOT WORKING
-                //await EnsureRole(serviceProvider, adminID, Constants.ContactAdministratorsRole);
+                await EnsureRole(serviceProvider, adminID, Constants.ContactAdministratorsRole);
 
                 // allowed user can create and edit contacts that they create
                 var managerID = await EnsureUser(serviceProvider, testUserPw, "manager@contoso.com");
                 //PIECE NOT WORKING
-                // await EnsureRole(serviceProvider, managerID, Constants.ContactManagersRole);
+                await EnsureRole(serviceProvider, managerID, Constants.ContactManagersRole);
 
                 SeedDB(context, adminID);
             }
         }
-
+        
         private static async Task<string> EnsureUser(IServiceProvider serviceProvider,
                                                     string testUserPw, string UserName)
         {
@@ -51,7 +50,8 @@ namespace Lab7P3
             {
                 throw new Exception("The password is probably not strong enough!");
             }
-
+            Console.WriteLine("=====================================================");
+            Console.WriteLine(testUserPw);
             return user.Id;
         }
 

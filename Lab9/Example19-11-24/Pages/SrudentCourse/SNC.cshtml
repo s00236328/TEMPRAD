@@ -1,0 +1,66 @@
+﻿@page "/SNC"
+@model Example19_11_24.Pages.SrudentCourse.SNCModel
+
+@{
+    ViewData["Title"] = "SNC";
+}
+
+<h1>SNC</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Student) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+                <td>
+                    @foreach(var c in item.Courses)
+                    {
+                    <span>@c.Name</span>
+                    <form method="post" asp-page-handler="Unenroll">
+                            <input type="hidden" name="CID" value="@c.CourseId" />
+                            <input type="hidden" name="SID" value="@item.StudentId" />
+                            <button type="submit">Unenroll</button>
+                            
+                    </form>
+                    }
+                </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.StudentId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.StudentId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.StudentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

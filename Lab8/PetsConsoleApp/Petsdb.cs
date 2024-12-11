@@ -10,7 +10,7 @@ namespace PetsConsoleApp
 {
     public class Petsdb : DbContext
     {
-        public Petsdb(DbContextOptions<Petsdb> options) : base(options) { }
+       // public Petsdb(DbContextOptions<Petsdb> options) : base(options) { }
 
         // DbSet for each entity
         public DbSet<Owner> Owners { get; set; }

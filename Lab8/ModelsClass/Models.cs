@@ -1,10 +1,6 @@
 ﻿using System.Collections.Generic;
 namespace ModelsClass
 {
-    public class Models
-    {
-
-    }
     public class Owner
     {
         public int OwnerId { get; set; }

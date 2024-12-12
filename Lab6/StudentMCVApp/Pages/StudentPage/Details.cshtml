@@ -31,6 +31,16 @@
         </dd>
     </dl>
 </div>
+
+<hr />
+<h6>Courses taken by @Html.DisplayFor(model => model.Student.Name)</h6>
+<ul>
+    @foreach (var item in Model.Student.Courses)
+    {
+        <li><a asp-page="/Courses/Details" asp-route-id="@item.Id">@Html.Raw(item.Name)</a></li>
+    }
+</ul>
+<hr />
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Student.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>

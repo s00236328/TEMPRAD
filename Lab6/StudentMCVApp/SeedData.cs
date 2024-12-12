@@ -60,7 +60,8 @@ namespace StudentMCVApp
                     student1.Courses.Add(module1);
                     student1.Courses.Add(module2);
                     student2.Courses.Add(module1);
-
+                    module1.Students.Add(student1);
+                    module1.Students.Add(student2);
                     context.SaveChanges();
 
                     Console.WriteLine("Seed data created");

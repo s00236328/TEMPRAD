@@ -24,4 +24,8 @@
     <ProjectReference Include="..\StudentClassLibrary\StudentClassLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S00236328 classlibrary", "S00236328 classlibrary\S00236328 classlibrary.csproj", "{73519C81-3668-4A4C-A5A1-39B49D68FD35}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s00236328 consoleapp", "s00236328 consoleapp\s00236328 consoleapp.csproj", "{12D6A464-E640-4B53-A78D-49E2FD6A888A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{73519C81-3668-4A4C-A5A1-39B49D68FD35} = {73519C81-3668-4A4C-A5A1-39B49D68FD35}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "s00236328 webapp", "s00236328 webapp\s00236328 webapp.csproj", "{F11215EC-11D6-4003-AC4E-3EAD6382EAF8}"
 EndProject

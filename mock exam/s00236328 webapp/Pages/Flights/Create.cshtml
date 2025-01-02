@@ -1,0 +1,59 @@
+﻿@page
+@model s00236328_webapp.Pages.Flights_model.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Flight</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Flight.FlightNo" class="control-label"></label>
+                <input asp-for="Flight.FlightNo" class="form-control" />
+                <span asp-validation-for="Flight.FlightNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flight.DepartureTime" class="control-label"></label>
+                <input asp-for="Flight.DepartureTime" class="form-control" />
+                <span asp-validation-for="Flight.DepartureTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flight.Origin" class="control-label"></label>
+                <input asp-for="Flight.Origin" class="form-control" />
+                <span asp-validation-for="Flight.Origin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flight.Destination" class="control-label"></label>
+                <input asp-for="Flight.Destination" class="form-control" />
+                <span asp-validation-for="Flight.Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flight.DestinationCountry" class="control-label"></label>
+                <input asp-for="Flight.DestinationCountry" class="form-control" />
+                <span asp-validation-for="Flight.DestinationCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flight.MaxSeats" class="control-label"></label>
+                <input asp-for="Flight.MaxSeats" class="form-control" />
+                <span asp-validation-for="Flight.MaxSeats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

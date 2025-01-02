@@ -15,11 +15,22 @@ namespace S00236328_classlibrary
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=flights.db");
+            optionsBuilder.UseSqlite("Data Source=D:\\repo\\TEMPRAD\\mock exam\\s00236328 consoleapp\\flights.db");
         }
-
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+          //  modelBuilder.Entity<PassengerBooking>()
+          //.HasOne(pb => pb.Flight)
+          //.WithMany() // One Flight can have many PassengerBookings
+          //.HasForeignKey(pb => pb.FlightId);
+
+          //  modelBuilder.Entity<PassengerBooking>()
+          //      .HasOne(pb => pb.Passenger)
+          //      .WithMany() // One Passenger can have many bookings
+          //      .HasForeignKey(pb => pb.PassengerId);
+
+            base.OnModelCreating(modelBuilder);
             // Seed data for Flights
             modelBuilder.Entity<Flight>().HasData(
                 new Flight { FlightId = 1, FlightNo = "IT-001", DepartureTime = new DateTime(2025, 1, 12, 22, 0, 0), Origin = "Dublin", Destination = "Rome", DestinationCountry = "Italy", MaxSeats = 110 },
@@ -48,6 +59,7 @@ namespace S00236328_classlibrary
                 new PassengerBooking { Id = 5, FlightId = 1, PassengerId = 5, TicketType = TicketType.Economy, TicketCost = 69.00, BaggageCharge = 15 },
                 new PassengerBooking { Id = 6, FlightId = 5, PassengerId = 6, TicketType = TicketType.FirstClass, TicketCost = 127.00, BaggageCharge = 10 }
             );
+         
         }
     }
 }

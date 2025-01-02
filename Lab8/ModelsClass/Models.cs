@@ -5,36 +5,36 @@ namespace ModelsClass
     {
         public int OwnerId { get; set; }
         public string Name { get; set; }
-        public int VeterinarianId { get; set; } // Foreign Key for One-to-One relationship
-        public Veterinarian Veterinarian { get; set; } // Navigation property
-        public List<Pet> Pets { get; set; } = new List<Pet>(); // Navigation property
+        public int VeterinarianId { get; set; } // Fk  
+        public Veterinarian Veterinarian { get; set; }
+        public List<Pet> Pets { get; set; } = new List<Pet>(); 
     }
 
-    // Pet class with Many-to-One relationship with Owner and Many-to-Many with Toy
+    // Pet with Many-to-One Owner Many-to-Many with Toy
     public class Pet
     {
         public int PetId { get; set; }
         public string Name { get; set; }
-        public int OwnerId { get; set; } // Foreign Key
-        public Owner Owner { get; set; } // Navigation property
-        public List<PetToy> PetToys { get; set; } = new List<PetToy>(); // Navigation property
+        public int OwnerId { get; set; } // Fk
+        public Owner Owner { get; set; } 
+        public List<PetToy> PetToys { get; set; } = new List<PetToy>(); 
     }
 
-    // Toy class with Many-to-Many relationship with Pet
+    // Toy Many-to-Many with Pet
     public class Toy
     {
         public int ToyId { get; set; }
         public string Name { get; set; }
-        public List<PetToy> PetToys { get; set; } = new List<PetToy>(); // Navigation property
+        public List<PetToy> PetToys { get; set; } = new List<PetToy>(); 
     }
 
-    // Junction table for Many-to-Many relationship between Pet and Toy
+    // join table for Many-to-Many relation Pet and Toy
     public class PetToy
     {
-        public int PetId { get; set; } // Foreign Key
-        public Pet Pet { get; set; } // Navigation property
-        public int ToyId { get; set; } // Foreign Key
-        public Toy Toy { get; set; } // Navigation property
+        public int PetId { get; set; } // Fk
+        public Pet Pet { get; set; } 
+        public int ToyId { get; set; } // Fk
+        public Toy Toy { get; set; } 
     }
 
     // Veterinarian class with One-to-Many relationship with Owners
@@ -42,7 +42,7 @@ namespace ModelsClass
     {
         public int VeterinarianId { get; set; }
         public string Name { get; set; }
-        public List<Owner> Owners { get; set; } = new List<Owner>(); // Navigation property
+        public List<Owner> Owners { get; set; } = new List<Owner>(); 
     }
 }
 

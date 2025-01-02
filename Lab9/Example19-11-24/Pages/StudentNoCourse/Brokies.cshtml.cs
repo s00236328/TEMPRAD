@@ -22,6 +22,7 @@ namespace Example19_11_24.Pages.StudentNoCourse
 
         public async Task OnGetAsync()
         {
+            //get students with 0 or less then 0 courses
             Student = await _context.Students.
                 Where(s=>s.Courses.Count <= 0).
                 ToListAsync();

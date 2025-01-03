@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using S00236328_classlibrary;
 
-namespace s00236328_webapp.Pages.Flights_model
+namespace s00236328_webapp.Pages.Flights
 {
     public class DetailsModel : PageModel
     {
@@ -18,7 +18,7 @@ namespace s00236328_webapp.Pages.Flights_model
             _context = context;
         }
 
-        public Flight Flight { get; set; } = default!;
+        public Passenger Passenger { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,14 +27,14 @@ namespace s00236328_webapp.Pages.Flights_model
                 return NotFound();
             }
 
-            var flight = await _context.Flights.FirstOrDefaultAsync(m => m.FlightId == id);
-            if (flight == null)
+            var passenger = await _context.Passengers.FirstOrDefaultAsync(m => m.PassengerId == id);
+            if (passenger == null)
             {
                 return NotFound();
             }
             else
             {
-                Flight = flight;
+                Passenger = passenger;
             }
             return Page();
         }

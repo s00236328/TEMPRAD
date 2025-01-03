@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using S00236328_classlibrary;
 
-namespace s00236328_webapp.Pages.Flights_model
+namespace s00236328_webapp.Pages.Flights
 {
     public class DeleteModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace s00236328_webapp.Pages.Flights_model
         }
 
         [BindProperty]
-        public Flight Flight { get; set; } = default!;
+        public Passenger Passenger { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,15 +28,15 @@ namespace s00236328_webapp.Pages.Flights_model
                 return NotFound();
             }
 
-            var flight = await _context.Flights.FirstOrDefaultAsync(m => m.FlightId == id);
+            var passenger = await _context.Passengers.FirstOrDefaultAsync(m => m.PassengerId == id);
 
-            if (flight == null)
+            if (passenger == null)
             {
                 return NotFound();
             }
             else
             {
-                Flight = flight;
+                Passenger = passenger;
             }
             return Page();
         }
@@ -48,11 +48,11 @@ namespace s00236328_webapp.Pages.Flights_model
                 return NotFound();
             }
 
-            var flight = await _context.Flights.FindAsync(id);
-            if (flight != null)
+            var passenger = await _context.Passengers.FindAsync(id);
+            if (passenger != null)
             {
-                Flight = flight;
-                _context.Flights.Remove(Flight);
+                Passenger = passenger;
+                _context.Passengers.Remove(Passenger);
                 await _context.SaveChangesAsync();
             }
 

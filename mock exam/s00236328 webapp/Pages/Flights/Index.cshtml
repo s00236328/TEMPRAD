@@ -1,5 +1,5 @@
-﻿@page
-@model s00236328_webapp.Pages.Flights_model.IndexModel
+﻿@page "/home"
+@model s00236328_webapp.Pages.Flights.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,51 +14,27 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Flight[0].FlightNo)
+                @Html.DisplayNameFor(model => model.Passenger[0].PassengerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Flight[0].DepartureTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Flight[0].Origin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Flight[0].Destination)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Flight[0].DestinationCountry)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Flight[0].MaxSeats)
+                @Html.DisplayNameFor(model => model.Passenger[0].Passport)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Flight) {
+@foreach (var item in Model.Passenger) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FlightNo)
+                @Html.DisplayFor(modelItem => item.PassengerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DepartureTime)
+                @Html.DisplayFor(modelItem => item.Passport)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Origin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destination)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestinationCountry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxSeats)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.FlightId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FlightId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.FlightId">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.PassengerId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PassengerId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PassengerId">Delete</a>
             </td>
         </tr>
 }

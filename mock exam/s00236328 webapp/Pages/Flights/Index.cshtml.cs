@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using S00236328_classlibrary;
 
-namespace s00236328_webapp.Pages.Flights_model
+namespace s00236328_webapp.Pages.Flights
 {
     public class IndexModel : PageModel
     {
@@ -18,11 +18,11 @@ namespace s00236328_webapp.Pages.Flights_model
             _context = context;
         }
 
-        public IList<Flight> Flight { get;set; } = default!;
+        public IList<Passenger> Passenger { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Flight = await _context.Flights.ToListAsync();
+            Passenger = await _context.Passengers.ToListAsync();
         }
     }
 }

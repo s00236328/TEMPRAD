@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using S00236328_classlibrary;
 
-namespace s00236328_webapp.Pages.Flights_model
+namespace s00236328_webapp.Pages.Flights
 {
     public class EditModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace s00236328_webapp.Pages.Flights_model
         }
 
         [BindProperty]
-        public Flight Flight { get; set; } = default!;
+        public Passenger Passenger { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,12 +29,12 @@ namespace s00236328_webapp.Pages.Flights_model
                 return NotFound();
             }
 
-            var flight =  await _context.Flights.FirstOrDefaultAsync(m => m.FlightId == id);
-            if (flight == null)
+            var passenger =  await _context.Passengers.FirstOrDefaultAsync(m => m.PassengerId == id);
+            if (passenger == null)
             {
                 return NotFound();
             }
-            Flight = flight;
+            Passenger = passenger;
             return Page();
         }
 
@@ -47,7 +47,7 @@ namespace s00236328_webapp.Pages.Flights_model
                 return Page();
             }
 
-            _context.Attach(Flight).State = EntityState.Modified;
+            _context.Attach(Passenger).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace s00236328_webapp.Pages.Flights_model
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FlightExists(Flight.FlightId))
+                if (!PassengerExists(Passenger.PassengerId))
                 {
                     return NotFound();
                 }
@@ -68,9 +68,9 @@ namespace s00236328_webapp.Pages.Flights_model
             return RedirectToPage("./Index");
         }
 
-        private bool FlightExists(int id)
+        private bool PassengerExists(int id)
         {
-            return _context.Flights.Any(e => e.FlightId == id);
+            return _context.Passengers.Any(e => e.PassengerId == id);
         }
     }
 }

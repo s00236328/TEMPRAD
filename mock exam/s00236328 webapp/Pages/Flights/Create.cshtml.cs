@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using S00236328_classlibrary;
 
-namespace s00236328_webapp.Pages.Flights_model
+namespace s00236328_webapp.Pages.Flights
 {
     public class CreateModel : PageModel
     {
@@ -24,7 +24,7 @@ namespace s00236328_webapp.Pages.Flights_model
         }
 
         [BindProperty]
-        public Flight Flight { get; set; } = default!;
+        public Passenger Passenger { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -34,7 +34,7 @@ namespace s00236328_webapp.Pages.Flights_model
                 return Page();
             }
 
-            _context.Flights.Add(Flight);
+            _context.Passengers.Add(Passenger);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
